@@ -1,0 +1,48 @@
+{
+  "name": "nomadcoder-trendingmovie",
+  "version": "1.0.0",
+  "description": "Repository to create a \"Trending Movie\" website based on the lecture from NomadCoder",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "webpack serve --mode development --open --hot --config ./webpack.dev.js --progress",
+    "build": "cross-env NODE_ENV=production webpack --config ./webpack.prod.js --progress",
+    "lint": "prettier --check \"**/*.{js,jsx,css}\" && eslint \"**/*.{js,jsx}\"",
+    "lint:fix": "prettier --write \"**/*.{js,jsx,css}\" && eslint --fix \"**/*.{js,jsx}\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hyecheol123/NomadCoder-TrendingMovie.git"
+  },
+  "author": "Hyecheol (Jerry)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hyecheol123/NomadCoder-TrendingMovie/issues"
+  },
+  "homepage": "https://github.com/hyecheol123/NomadCoder-TrendingMovie#readme",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.5",
+    "@babel/preset-env": "^7.16.5",
+    "@babel/preset-react": "^7.16.5",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
+    "babel-loader": "^8.2.3",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.5.1",
+    "eslint": "^8.4.1",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-react-app": "^7.0.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "html-webpack-plugin": "^5.5.0",
+    "prettier": "^2.5.1",
+    "react-refresh": "^0.11.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.6.0",
+    "webpack-merge": "^5.8.0"
+  }
+}
