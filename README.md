@@ -33,3 +33,4 @@ Create a trending movie website with React JS.
 - Components for Movie Detail
 - Desktop and Mobile design
 - Check web browser functionality and notice user with unsupported browser to update/download newer web browser.
+- Performance Optimization

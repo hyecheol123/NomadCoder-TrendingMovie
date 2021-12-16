@@ -1,9 +1,9 @@
-import { merge } from 'webpack-merge';
-import common from './webpack.common.js';
-import RefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
-import { HotModuleReplacementPlugin } from 'webpack';
+const { merge } = require('webpack-merge');
+const common = require('./webpack.common.js');
+const RefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const webpack = require('webpack');
 
-export default merge(common, {
+module.exports = merge(common, {
   mode: 'development',
   devtool: 'eval-source-map',
   devServer: {
@@ -11,5 +11,8 @@ export default merge(common, {
     hot: true,
     allowedHosts: ['.loca.lt'],
   },
-  plugins: [new HotModuleReplacementPlugin(), new RefreshWebpackPlugin()],
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new RefreshWebpackPlugin(),
+  ],
 });
