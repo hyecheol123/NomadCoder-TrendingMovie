@@ -23,6 +23,7 @@ Create a trending movie website with React JS.
 - Fetch data from [yts.mx API](https://yts.mx/api).
 - Used React Router (v5) to navigate from home to movie detail.
 - Components for Home page
+- ~~Used PropTypes to enforce props type.~~
 
 **What I added/modified**
 
