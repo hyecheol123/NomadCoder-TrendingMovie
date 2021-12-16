@@ -6,6 +6,7 @@
 
 import * as React from 'react';
 import MovieSummary from './MovieSummary';
+import styles from '../../../styles/home/Home.module.css';
 
 // API KEY for TMDB
 const API_KEY = 'e17c42c71e132c1882e5746a3f0abb0d';
@@ -65,7 +66,7 @@ const Home = () => {
   return (
     <>
       {loading ? (
-        <div>Loading</div>
+        <div className={styles.Loading}></div>
       ) : (
         <div>
           {trendingMovies.map((tm) => (
