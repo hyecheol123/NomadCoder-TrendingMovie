@@ -8,7 +8,6 @@
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import * as React from 'react';
 import Home from './pages/home/Home';
-import Detail from './pages/detail/Detail';
 
 /**
  * React functional component for Router
@@ -20,12 +19,8 @@ const Router = () => {
   return (
     <HashRouter>
       <Routes>
-        <Route path="/movie/:id">
-          <Detail />
-        </Route>
-        <Route path="/">
-          <Home />
-        </Route>
+        <Route path="/movie/:id" element={<h1>Not yet implemented</h1>} />
+        <Route path="/" element={<Home />} />
       </Routes>
     </HashRouter>
   );
