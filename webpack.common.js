@@ -26,5 +26,5 @@ export const module = {
 };
 export const plugins = [
   new ProvidePlugin({ React: 'react' }),
-  new HtmlWebpackPlugin({ template: './9-times-table/public/index.html' }),
+  new HtmlWebpackPlugin({ template: './public/index.html' }),
 ];
