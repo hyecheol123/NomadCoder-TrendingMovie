@@ -20,6 +20,8 @@ const Home = () => {
   const [loading, setLoading] = React.useState(true);
   const [trendingMovies, setTrendingMovies] = React.useState([]);
   const [movieGenre, setMovieGenre] = React.useState({});
+  const [baseURL, setBaseURL] = React.useState('');
+  const [posterSize, setPosterSize] = React.useState('original');
 
   /**
    * Get trending movies from database
@@ -32,6 +34,9 @@ const Home = () => {
     const genreRequest = fetch(
       `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`
     );
+    const configRequest = fetch(
+      `https://api.themoviedb.org/3/configuration?api_key=${API_KEY}`
+    );
 
     // Set states
     setTrendingMovies(
@@ -42,6 +47,12 @@ const Home = () => {
     const genreResponse = (await (await genreRequest).json()).genres;
     genreResponse.forEach((obj) => (genreObj[obj.id] = obj.name));
     setMovieGenre(genreObj);
+    const configuration = await (await configRequest).json();
+    setBaseURL(configuration.images.secure_base_url);
+    console.log(configuration.images.poster_sizes);
+    if (configuration.images.poster_sizes.includes('w500')) {
+      setPosterSize('w500');
+    }
     setLoading(false);
   }, []);
 
@@ -62,10 +73,10 @@ const Home = () => {
               key={tm.id}
               id={tm.id}
               title={tm.title}
-              year={parseInt(tm.release_date.split(0, 4))}
+              year={parseInt(tm.release_date.substring(0, 4))}
               genre={tm.genre_ids.map((id) => movieGenre[id])}
               overview={tm.overview}
-              posterImg={tm.poster_path}
+              posterImg={`${baseURL}${posterSize}/${tm.poster_path}`}
             />
           ))}
         </div>

@@ -20,7 +20,20 @@ import * as React from 'react';
  * @return {React.ReactElement} A ReactElement referring MovieSummary
  */
 const MovieSummary = ({ id, title, year, genre, overview, posterImg }) => {
-  return <></>;
+  console.log(year);
+  return (
+    <div>
+      <img src={posterImg} alt={`${title} poster`} />
+      <div>{title}</div>
+      <div>{year}</div>
+      <div>
+        {genre.map((g) => (
+          <span key={`${id}_${g}`}>{g}</span>
+        ))}
+      </div>
+      <p>{overview}</p>
+    </div>
+  );
 };
 
 export default MovieSummary;
