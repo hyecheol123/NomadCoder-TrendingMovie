@@ -6,6 +6,7 @@
  */
 
 import * as React from 'react';
+import styles from '../../../styles/home/MovieSummary.module.css';
 
 /**
  * React functional component to show the movie's summary
@@ -20,18 +21,19 @@ import * as React from 'react';
  * @return {React.ReactElement} A ReactElement referring MovieSummary
  */
 const MovieSummary = ({ id, title, year, genre, overview, posterImg }) => {
-  console.log(year);
   return (
-    <div>
+    <div className={styles.MovieSummary}>
       <img src={posterImg} alt={`${title} poster`} />
-      <div>{title}</div>
-      <div>{year}</div>
-      <div>
-        {genre.map((g) => (
-          <span key={`${id}_${g}`}>{g}</span>
-        ))}
+      <div className={styles.InformationWrapper}>
+        <div className={styles.Title}>{title}</div>
+        <div className={styles.Year}>{year}</div>
+        <div className={styles.Genre}>
+          {genre.map((g) => (
+            <span key={`${id}_${g}`}>{g}</span>
+          ))}
+        </div>
+        <p className={styles.Overview}>{overview}</p>
       </div>
-      <p>{overview}</p>
     </div>
   );
 };

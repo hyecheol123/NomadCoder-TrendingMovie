@@ -29,8 +29,11 @@ const Home = () => {
    */
   const getTrendingMovies = React.useCallback(async () => {
     // Requests
-    const trendingMovieRequest = fetch(
-      `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`
+    const trendingMovieRequest1 = fetch(
+      `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&page=1`
+    );
+    const trendingMovieRequest2 = fetch(
+      `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&page=2`
     );
     const genreRequest = fetch(
       `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`
@@ -40,9 +43,9 @@ const Home = () => {
     );
 
     // Set states
-    setTrendingMovies(
-      (await (await trendingMovieRequest).json()).results.slice(0, 10)
-    );
+    const movieResult1 = (await (await trendingMovieRequest1).json()).results;
+    const movieResult2 = (await (await trendingMovieRequest2).json()).results;
+    setTrendingMovies([...movieResult1, ...movieResult2]);
     // Generate genreObj
     const genreObj = {};
     const genreResponse = (await (await genreRequest).json()).genres;
@@ -50,11 +53,38 @@ const Home = () => {
     setMovieGenre(genreObj);
     const configuration = await (await configRequest).json();
     setBaseURL(configuration.images.secure_base_url);
-    console.log(configuration.images.poster_sizes);
-    if (configuration.images.poster_sizes.includes('w500')) {
-      setPosterSize('w500');
+    if (configuration.images.poster_sizes.includes('w154')) {
+      setPosterSize('w154');
     }
     setLoading(false);
+  }, []);
+
+  /**
+   * Cut the overview which will be displayed on the page
+   *
+   * @param {string} overview movie overview
+   * @return {string} cutted overview having maximum length of 190
+   */
+  const cutOverview = React.useCallback((overview) => {
+    const token = overview.split(' ');
+    let index = 0;
+    let resultOverview = '';
+
+    console.log(token);
+
+    // Generate cutted overview having length less than 190
+    while (
+      index < token.length &&
+      resultOverview.length + token[index].length <= 186
+    ) {
+      resultOverview += ` ${token[index]}`;
+      ++index;
+    }
+    if (token.length !== index) {
+      resultOverview += ' ...';
+    }
+
+    return resultOverview;
   }, []);
 
   // Load trending movie on first load
@@ -68,7 +98,7 @@ const Home = () => {
       {loading ? (
         <div className={styles.Loading}></div>
       ) : (
-        <div>
+        <div className={styles.MovieWrapper}>
           {trendingMovies.map((tm) => (
             <MovieSummary
               key={tm.id}
@@ -76,7 +106,7 @@ const Home = () => {
               title={tm.title}
               year={parseInt(tm.release_date.substring(0, 4))}
               genre={tm.genre_ids.map((id) => movieGenre[id])}
-              overview={tm.overview}
+              overview={cutOverview(tm.overview)}
               posterImg={`${baseURL}${posterSize}/${tm.poster_path}`}
             />
           ))}

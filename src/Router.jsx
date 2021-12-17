@@ -8,6 +8,7 @@
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import * as React from 'react';
 import Home from './pages/home/Home';
+import '../styles/global.css';
 
 /**
  * React functional component for Router
