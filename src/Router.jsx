@@ -8,6 +8,7 @@
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import * as React from 'react';
 import Home from './pages/home/Home';
+import Detail from './pages/detail/Detail';
 import '../styles/global.css';
 
 /**
@@ -20,7 +21,7 @@ const Router = () => {
   return (
     <HashRouter>
       <Routes>
-        <Route path="/movie/:id" element={<h1>Not yet implemented</h1>} />
+        <Route path="/movie/:id" element={<Detail />} />
         <Route path="/" element={<Home />} />
       </Routes>
     </HashRouter>

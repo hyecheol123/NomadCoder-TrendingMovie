@@ -12,6 +12,34 @@ import styles from '../../../styles/home/Home.module.css';
 const API_KEY = 'e17c42c71e132c1882e5746a3f0abb0d';
 
 /**
+ * Cut the overview which will be displayed on the page
+ *
+ * @param {string} overview movie overview
+ * @return {string} cutted overview having maximum length of 190
+ */
+const cutOverview = (overview) => {
+  const token = overview.split(' ');
+  let index = 0;
+  let resultOverview = '';
+
+  console.log(token);
+
+  // Generate cutted overview having length less than 190
+  while (
+    index < token.length &&
+    resultOverview.length + token[index].length <= 186
+  ) {
+    resultOverview += ` ${token[index]}`;
+    ++index;
+  }
+  if (token.length !== index) {
+    resultOverview += ' ...';
+  }
+
+  return resultOverview;
+};
+
+/**
  * React functional component to render home screen
  *
  * @return {React.ReactElement} A ReactElement referring Home
@@ -57,34 +85,6 @@ const Home = () => {
       setPosterSize('w154');
     }
     setLoading(false);
-  }, []);
-
-  /**
-   * Cut the overview which will be displayed on the page
-   *
-   * @param {string} overview movie overview
-   * @return {string} cutted overview having maximum length of 190
-   */
-  const cutOverview = React.useCallback((overview) => {
-    const token = overview.split(' ');
-    let index = 0;
-    let resultOverview = '';
-
-    console.log(token);
-
-    // Generate cutted overview having length less than 190
-    while (
-      index < token.length &&
-      resultOverview.length + token[index].length <= 186
-    ) {
-      resultOverview += ` ${token[index]}`;
-      ++index;
-    }
-    if (token.length !== index) {
-      resultOverview += ' ...';
-    }
-
-    return resultOverview;
   }, []);
 
   // Load trending movie on first load
