@@ -23,7 +23,7 @@ const Detail = React.lazy(() => import('./pages/detail/Detail'));
  */
 const checkBrowser = () => {
   // Check for CSS.supports function
-  if (!CSS.supports) {
+  if (typeof CSS === 'undefined' || !CSS.supports) {
     return false;
   }
 
