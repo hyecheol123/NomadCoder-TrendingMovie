@@ -7,10 +7,13 @@
 
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import * as React from 'react';
-import Home from './pages/home/Home';
-import Detail from './pages/detail/Detail';
+import Loading from './components/Loading';
 import NotSupported from './pages/NotSupported/NotSupported';
 import '../styles/global.css';
+
+// Lazy Import
+const Home = React.lazy(() => import('./pages/home/Home'));
+const Detail = React.lazy(() => import('./pages/detail/Detail'));
 
 /**
  * Check for browser's functionality and return whether browser supports the
@@ -61,7 +64,7 @@ const checkBrowser = () => {
  */
 const Router = () => {
   // State
-  const [browserSupport, setBrowserSupport] = React.useState(false);
+  const [browserSupport, setBrowserSupport] = React.useState();
 
   // Check for browser functionality
   React.useEffect(() => {
@@ -70,16 +73,17 @@ const Router = () => {
 
   return (
     <React.StrictMode>
-      {browserSupport ? (
-        <HashRouter>
-          <Routes>
-            <Route path="/movie/:id" element={<Detail />} />
-            <Route path="/" element={<Home />} />
-          </Routes>
-        </HashRouter>
-      ) : (
-        <NotSupported />
+      {browserSupport === true && (
+        <React.Suspense fallback={Loading}>
+          <HashRouter>
+            <Routes>
+              <Route path="/movie/:id" element={<Detail />} />
+              <Route path="/" element={<Home />} />
+            </Routes>
+          </HashRouter>
+        </React.Suspense>
       )}
+      {browserSupport === false && <NotSupported />}
     </React.StrictMode>
   );
 };

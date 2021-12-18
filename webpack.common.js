@@ -3,14 +3,20 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ProvidePlugin } = require('webpack');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: ['./src/index.js'],
   resolve: {
     extensions: ['.js', '.jsx'],
   },
   output: {
     path: join(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
+    chunkFilename: '[name].chunk.bundle.js',
     clean: true,
+  },
+  optimization: {
+    splitChunks: {
+      chunks: "all"
+    }
   },
   module: {
     rules: [
