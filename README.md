@@ -34,3 +34,14 @@ Create a trending movie website with React JS.
 - Desktop and Mobile design
 - Check web browser functionality and notice user with unsupported browser to update/download newer web browser.
 - Performance Optimization
+
+| ![](https://raw.githubusercontent.com/hyecheol123/NomadCoder-TrendingMovie/main/img/home.png) |
+| :-------------------------------------------------------------------------------------------: |
+|                    _Demo Image for the main page of Daily Trending Movie_                     |
+
+| ![](https://raw.githubusercontent.com/hyecheol123/NomadCoder-TrendingMovie/main/img/detail.png) |
+| :---------------------------------------------------------------------------------------------: |
+|                 _Demo Image for the movie detail page of Daily Trending Movie_                  |
+
+Code Link: https://github.com/hyecheol123/NomadCoder-TrendingMovie  
+Demo Link: https://demo1.hcjang.com/trending-movie/
