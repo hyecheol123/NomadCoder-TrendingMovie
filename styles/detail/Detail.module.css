@@ -58,17 +58,30 @@
 
 .InformationWrapper {
   display: grid;
-  grid-template-columns: 320px 1fr;
+  grid-template-columns: 320px auto;
   column-gap: 15px;
   margin-top: 20px;
 }
 
 .InformationWrapper img {
+  display: block;
+  margin: 0 auto;
   width: 100%;
+  max-width: 320px;
 }
 
 .Information {
   margin-top: -25px;
+}
+
+@media screen and (max-width: 640px) {
+  .InformationWrapper {
+    display: block;
+  }
+
+  .Information {
+    margin-top: 25px;
+  }
 }
 
 .ElementWrapper {
@@ -88,6 +101,8 @@
   margin: 0;
 }
 
-.ElementWrapper a {
+.ElementWrapper a div {
+  width: 100%;
   color: black;
+  font-size: 0.8em;
 }
