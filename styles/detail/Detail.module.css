@@ -1,0 +1,93 @@
+.ContentWrapper {
+  padding: 0px 10px;
+}
+
+.Warning svg {
+  margin: 0 10px;
+  color: orangered;
+}
+
+.Warning h3 {
+  margin: 5px 0px;
+  font-size: 1.3em;
+}
+
+.Warning ul {
+  margin: 20px 0px;
+  padding-left: 10px;
+  list-style-position: inside;
+}
+
+.Warning ul li {
+  font-size: 1.1em;
+  list-style-type: disc;
+  margin: 3px 0;
+}
+
+.Title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.8em;
+}
+
+.MovieDetailWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.MovieDetail {
+  max-width: 1000px;
+}
+
+.Date,
+.GenreWrapper {
+  font-size: 1em;
+  margin: 4px 0;
+}
+
+.GenreWrapper {
+  margin-left: -0.3125em;
+}
+
+.GenreWrapper span {
+  margin: 0 0.3125em;
+  font-style: italic;
+  color: gray;
+}
+
+.InformationWrapper {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  column-gap: 15px;
+  margin-top: 20px;
+}
+
+.InformationWrapper img {
+  width: 100%;
+}
+
+.Information {
+  margin-top: -25px;
+}
+
+.ElementWrapper {
+  margin: 25px 0;
+}
+
+.ElementWrapper h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.3em;
+}
+
+.ElementWrapper p,
+.ElementWrapper div {
+  font-size: 1em;
+  line-height: 1.25em;
+  margin: 0;
+}
+
+.ElementWrapper a {
+  color: black;
+}
