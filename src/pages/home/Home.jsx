@@ -98,18 +98,21 @@ const Home = () => {
       {loading ? (
         <div className={styles.Loading}></div>
       ) : (
-        <div className={styles.MovieWrapper}>
-          {trendingMovies.map((tm) => (
-            <MovieSummary
-              key={tm.id}
-              id={tm.id}
-              title={tm.title}
-              year={parseInt(tm.release_date.substring(0, 4))}
-              genre={tm.genre_ids.map((id) => movieGenre[id])}
-              overview={cutOverview(tm.overview)}
-              posterImg={`${baseURL}${posterSize}/${tm.poster_path}`}
-            />
-          ))}
+        <div>
+          <h1 className={styles.Heading}>Daily Trending Movies</h1>
+          <div className={styles.MovieWrapper}>
+            {trendingMovies.map((tm) => (
+              <MovieSummary
+                key={tm.id}
+                id={tm.id}
+                title={tm.title}
+                year={parseInt(tm.release_date.substring(0, 4))}
+                genre={tm.genre_ids.map((id) => movieGenre[id])}
+                overview={cutOverview(tm.overview)}
+                posterImg={`${baseURL}${posterSize}/${tm.poster_path}`}
+              />
+            ))}
+          </div>
         </div>
       )}
     </>

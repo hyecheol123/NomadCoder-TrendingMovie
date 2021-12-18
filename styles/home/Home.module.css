@@ -17,6 +17,12 @@
   }
 }
 
+.Heading {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2em;
+}
+
 .MovieWrapper {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 500px));
