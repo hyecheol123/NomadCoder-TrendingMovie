@@ -7,6 +7,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+  target: 'browserslist',
   output: {
     path: join(__dirname, 'dist'),
     filename: '[name].bundle.js',
@@ -15,8 +16,8 @@ module.exports = {
   },
   optimization: {
     splitChunks: {
-      chunks: "all"
-    }
+      chunks: 'all',
+    },
   },
   module: {
     rules: [

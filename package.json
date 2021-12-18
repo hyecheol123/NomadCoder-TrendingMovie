@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Repository to create a \"Trending Movie\" website based on the lecture from NomadCoder",
   "main": "src/index.js",
+  "browserslist": ["defaults", "> 0.25% in KR", "> 0.25% in US"],
   "scripts": {
     "dev": "webpack serve --mode development --open --hot --config ./webpack.dev.js --progress",
     "build": "cross-env NODE_ENV=production webpack --config ./webpack.prod.js --progress",

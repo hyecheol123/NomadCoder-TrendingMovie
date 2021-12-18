@@ -5,9 +5,6 @@ module.exports = {
       '@babel/preset-env',
       {
         debug: true,
-        targets: {
-          browsers: ['defaults', '> 0.25% in KR', '> 0.25% in US'],
-        },
       },
     ],
   ],
