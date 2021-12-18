@@ -7,7 +7,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
-  target: 'browserslist',
+  target: ['browserslist', 'es5'],
   output: {
     path: join(__dirname, 'dist'),
     filename: '[name].bundle.js',
@@ -23,7 +23,7 @@ module.exports = {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        exclude: /node_modules\/(?!(axios))/,
+        exclude: /node_modules\/(?!(react\-router))/,
         loader: 'babel-loader',
       },
       {
