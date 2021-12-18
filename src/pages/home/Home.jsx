@@ -5,6 +5,7 @@
  */
 
 import * as React from 'react';
+import Loading from '../../components/Loading';
 import MovieSummary from './MovieSummary';
 import styles from '../../../styles/home/Home.module.css';
 
@@ -21,8 +22,6 @@ const cutOverview = (overview) => {
   const token = overview.split(' ');
   let index = 0;
   let resultOverview = '';
-
-  console.log(token);
 
   // Generate cutted overview having length less than 190
   while (
@@ -81,8 +80,8 @@ const Home = () => {
     setMovieGenre(genreObj);
     const configuration = await (await configRequest).json();
     setBaseURL(configuration.images.secure_base_url);
-    if (configuration.images.poster_sizes.includes('w154')) {
-      setPosterSize('w154');
+    if (configuration.images.poster_sizes.includes('w342')) {
+      setPosterSize('w342');
     }
     setLoading(false);
   }, []);
@@ -96,7 +95,7 @@ const Home = () => {
   return (
     <>
       {loading ? (
-        <div className={styles.Loading}></div>
+        <Loading />
       ) : (
         <div>
           <h1 className={styles.Heading}>Daily Trending Movies</h1>
@@ -110,6 +109,7 @@ const Home = () => {
                 genre={tm.genre_ids.map((id) => movieGenre[id])}
                 overview={cutOverview(tm.overview)}
                 posterImg={`${baseURL}${posterSize}/${tm.poster_path}`}
+                apiKey={API_KEY}
               />
             ))}
           </div>

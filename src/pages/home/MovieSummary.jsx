@@ -6,6 +6,7 @@
  */
 
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import styles from '../../../styles/home/MovieSummary.module.css';
 
 /**
@@ -18,23 +19,34 @@ import styles from '../../../styles/home/MovieSummary.module.css';
  * @param {string[]} props.genre Array containing the movie's genre
  * @param {string} props.overview text summary of movie
  * @param {string} props.posterImg path to the posterImg
+ * @param {string} props.apiKey API Key for "the movie database"
  * @return {React.ReactElement} A ReactElement referring MovieSummary
  */
-const MovieSummary = ({ id, title, year, genre, overview, posterImg }) => {
+const MovieSummary = ({
+  id,
+  title,
+  year,
+  genre,
+  overview,
+  posterImg,
+  apiKey,
+}) => {
   return (
-    <div className={styles.MovieSummary}>
-      <img src={posterImg} alt={`${title} poster`} />
-      <div className={styles.InformationWrapper}>
-        <div className={styles.Title}>{title}</div>
-        <div className={styles.Year}>{year}</div>
-        <div className={styles.Genre}>
-          {genre.map((g) => (
-            <span key={`${id}_${g}`}>{g}</span>
-          ))}
+    <Link to={`/movie/${id}`} state={{ apiKey: apiKey, posterImg: posterImg }}>
+      <div className={styles.MovieSummary}>
+        <img src={posterImg} alt={`${title} poster`} />
+        <div className={styles.InformationWrapper}>
+          <div className={styles.Title}>{title}</div>
+          <div className={styles.Year}>{year}</div>
+          <div className={styles.Genre}>
+            {genre.map((g) => (
+              <span key={`${id}_${g}`}>{g}</span>
+            ))}
+          </div>
+          <p className={styles.Overview}>{overview}</p>
         </div>
-        <p className={styles.Overview}>{overview}</p>
       </div>
-    </div>
+    </Link>
   );
 };
 
